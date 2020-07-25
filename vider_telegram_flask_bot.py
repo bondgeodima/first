@@ -40,12 +40,12 @@ def receive_update():
                 print('ok')
                 print(request.json)
                 chat_id = request.json["message"]["chat"]["id"]
-                # m_text = request.json["message"]["text"]
-                photo = request.json["message"]["message_id"]
-                print (photo)
+                m_text = request.json["message"]["text"]
+                # photo = request.json["message"]["message_id"]
+                # print (photo)
                 # send_message(chat_id, "pong")
-                send_message(chat_id, photo)
-                # send_message(chat_id, m_text)
+                # send_message(chat_id, photo)
+                send_message(chat_id, m_text)
                 return {"ok": True}
             except Exception as e:
                 send_message(chat_id, text=str(e))
