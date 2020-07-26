@@ -121,7 +121,7 @@ def check_register_chat_id(chat_id):
     connection = connection_db()
     cursor = connection.cursor()
 
-    select_query = "SELECT number FROM avto.user WHERE chat_id = " + str(chat_id) + " LIMIT 1"
+    select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + "' LIMIT 1"
 
     print(select_query)
 
@@ -141,7 +141,7 @@ def delete_registration(chat_id):
     connection = connection_db()
     cursor = connection.cursor()
 
-    select_query = "DELETE FROM avto.user WHERE chat_id = " + str(chat_id)
+    select_query = "DELETE FROM avto.user WHERE chat_id = " + str(chat_id) + "'"
 
     cursor.execute(select_query)
     connection.commit()
@@ -306,7 +306,7 @@ def handle_docs_photo(message):
 
                     if check_register_value[0] == "0":
                         insert_query = "INSERT INTO avto.user(number, chat_id) VALUES ('" \
-                                       + str(value) + "','" + str(chat_id) + "')"
+                                       + str(value) + "','" + str(chat_id) + "','" + str('t') + "')"
                         cursor.execute(insert_query)
                         connection.commit()
                         bot.reply_to(message, "Зареєстровано з номером " + value)
@@ -316,7 +316,7 @@ def handle_docs_photo(message):
                         if len(check_register_value[2]) > 1:
                             bot.reply_to(message, check_register_value[2])
                 else:
-                    select_query = "SELECT number FROM avto.user WHERE chat_id = " + str(chat_id) + " LIMIT 1"
+                    select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + "' LIMIT 1"
                     print(select_query)
                     cursor.execute(select_query)
                     mobile_records = cursor.fetchall()
@@ -374,7 +374,7 @@ def echo_message(message):
 
         if check_register_value[0] == "0":
             insert_query = "INSERT INTO avto.user(number, chat_id) VALUES ('" \
-                           + str(value[1:]) + "','" + str(chat_id) + "')"
+                           + str(value[1:]) + "','" + str(chat_id) + "','" + str('t') + "')"
             cursor.execute(insert_query)
             connection.commit()
             bot.reply_to(message, "Зареєстровано з номером " + value[1:])
@@ -388,7 +388,7 @@ def echo_message(message):
 
     if value[0:1] == '#':
         try:
-            select_query = "SELECT number FROM avto.user WHERE chat_id = " + str(chat_id) + " LIMIT 1"
+            select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + " 'LIMIT 1"
             print(select_query)
             cursor.execute(select_query)
             mobile_records = cursor.fetchall()
