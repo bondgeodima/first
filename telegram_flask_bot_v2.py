@@ -305,7 +305,7 @@ def handle_docs_photo(message):
                     check_register_value = check_register(value, chat_id)
 
                     if check_register_value[0] == "0":
-                        insert_query = "INSERT INTO avto.user(number, chat_id) VALUES ('" \
+                        insert_query = "INSERT INTO avto.user(number, chat_id, messenger) VALUES ('" \
                                        + str(value) + "','" + str(chat_id) + "','" + str('t') + "')"
                         cursor.execute(insert_query)
                         connection.commit()
@@ -388,7 +388,7 @@ def echo_message(message):
 
     if value[0:1] == '#':
         try:
-            select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + " 'LIMIT 1"
+            select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + "' LIMIT 1"
             print(select_query)
             cursor.execute(select_query)
             mobile_records = cursor.fetchall()
