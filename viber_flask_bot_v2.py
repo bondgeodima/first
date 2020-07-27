@@ -25,6 +25,9 @@ from viberbot.api.messages.data_types.contact import Contact
 
 import psycopg2
 
+import urllib.request
+import time
+
 
 def replace_all(text, dic):
     for i, j in dic.items():
@@ -190,7 +193,7 @@ def incoming():
                         ])
             if value[0:1] == '#':
                 try:
-                    select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + "'LIMIT 1"
+                    select_query = "SELECT number FROM avto.user WHERE chat_id = '" + str(chat_id) + "' LIMIT 1"
                     print(select_query)
                     cursor.execute(select_query)
                     mobile_records = cursor.fetchall()
@@ -242,6 +245,13 @@ def incoming():
 
         if t == 'picture':
             print ('send picture')
+            print (message)
+            caption = message.media.caption
+            file_name = str(viber_request.sender.id) + str(time.time()) + str(".jpg")
+            urllib.request.urlretrieve(message.media,
+                                       "D:/_deeplearning/__from_kiev/_photo_from_bot/photos/viber/"+file_name)
+            src = "D:/_deeplearning/__from_kiev/_photo_from_bot/photos/viber/" + file_name
+            return Response(status=200)
         # message = PictureMessage(
         #     media="https://0eae6dde0922.ngrok.io/file-downloads/",
         #     text="Viber logo")
