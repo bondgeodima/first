@@ -382,4 +382,11 @@ def echo_message(message):
     bot.reply_to(message, message.text)
 
 
-bot.polling(none_stop=True, interval=0, timeout=5)
+while True:
+
+    try:
+        bot.polling(none_stop=True, interval=0, timeout=5)
+
+    except Exception as e:
+        time.sleep(15)
+        print(str(e))

@@ -3,22 +3,22 @@ import skimage.io
 import json
 
 ROOT_DIR = os.path.abspath("../")
-IMAGE_DIR = os.path.join(ROOT_DIR, "F:/sas_out/varshava_256/jpg/")
+IMAGE_DIR = os.path.join(ROOT_DIR, "F:/car_kosmos/new_rgb_tile/tile_128/tif/")
 
 s = {
     "type": "FeatureCollection",
     "name": "car",
-    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32636" } },
     "features": []
 }
 
 features = []
 
 for filename in os.listdir(IMAGE_DIR):
-    if filename.split(".")[1] == 'jpg':
+    if filename.split(".")[1] == 'tif':
         # print (filename)
         your_path = os.path.join(IMAGE_DIR, filename)
-        file_coord = filename.split(".")[0] + '.jgw'
+        file_coord = filename.split(".")[0] + '.wld'
         file_coord = os.path.join(IMAGE_DIR, file_coord)
         # print(your_path)
 
@@ -63,7 +63,7 @@ for filename in os.listdir(IMAGE_DIR):
 s["features"] = features
 # print(json.dumps(s, indent=4))
 # with open('F:/car_image_train/data.geojson', 'w') as outfile:
-with open('F:/sas_out/varshava_256/data_grid_256.geojson', 'w') as outfile:
+with open('F:/car_kosmos/new_rgb_tile/tile_128/data_grid_128.geojson', 'w') as outfile:
     json.dump(s, outfile)
 print("End")
 

@@ -220,7 +220,7 @@ def handle_docs_photo(message):
         file_info = bot.get_file(message.video.file_id)
         downloaded_file = bot.download_file(file_info.file_path)
 
-        src = 'E:/_deeplearning/__from_kiev/_photo_from_bot/' + file_info.file_path;
+        src = 'D:/_deeplearning/__from_kiev/_photo_from_bot/' + file_info.file_path;
         with open(src, 'wb') as new_file:
             new_file.write(downloaded_file)
 
@@ -236,7 +236,7 @@ def handle_docs_photo(message):
         file_info = bot.get_file(message.audio.file_id)
         downloaded_file = bot.download_file(file_info.file_path)
 
-        src = 'E:/_deeplearning/__from_kiev/_photo_from_bot/' + file_info.file_path;
+        src = 'D:/_deeplearning/__from_kiev/_photo_from_bot/' + file_info.file_path;
         with open(src, 'wb') as new_file:
             new_file.write(downloaded_file)
 
@@ -252,7 +252,7 @@ def handle_docs_photo(message):
         file_info = bot.get_file(message.document.file_id)
         downloaded_file = bot.download_file(file_info.file_path)
 
-        src = 'E:/_deeplearning/__from_kiev/_photo_from_bot/documents/' + message.document.file_name;
+        src = 'D:/_deeplearning/__from_kiev/_photo_from_bot/documents/' + message.document.file_name;
         with open(src, 'wb') as new_file:
             new_file.write(downloaded_file)
 
@@ -267,4 +267,11 @@ def echo_message(message):
     bot.reply_to(message, message.text)
 
 
-bot.polling(none_stop=True, interval=0, timeout=5)
+while True:
+
+    try:
+        bot.polling(none_stop=True, interval=0, timeout=5)
+
+    except Exception as e:
+        time.sleep(15)
+        print(str(e))

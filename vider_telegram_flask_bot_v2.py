@@ -76,7 +76,7 @@ viber = Api(BotConfiguration(
     auth_token='4bdc538a20e7d1b3-21905a4be00e2fd3-e79c68a1197c6ec8'
 ))
 
-bot = telebot.TeleBot('1383386139:AAGWeMlF9BW26ZwUwnVuk2pQm6nOvUADxyw', threaded=False)
+bot = telebot.TeleBot('922151292:AAGAMicVQit6cRf94SZ3P50gTZhXNQMYRZg', threaded=False)
 
 logger = telebot.logger
 telebot.logger.setLevel(logging.DEBUG)

@@ -34,6 +34,7 @@ import datetime
 import numpy as np
 import skimage.draw
 import imgaug.augmenters as iaa
+import keras
 
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
@@ -76,9 +77,11 @@ class BalloonConfig(Config):
     NUM_CLASSES = 1 + 168  # Background + balloon
 
     # Number of training steps per epoch
-    STEPS_PER_EPOCH = 5000
+    # STEPS_PER_EPOCH = 5000
+    STEPS_PER_EPOCH = 100
 
-    VALIDATION_STEPS = 1000
+    # VALIDATION_STEPS = 1000
+    VALIDATION_STEPS = 20
 
     # Skip detections with < 90% confidence
     DETECTION_MIN_CONFIDENCE = 0.9
@@ -473,7 +476,8 @@ def train(model):
     model.train(dataset_train, dataset_val,
                 # learning_rate=config.LEARNING_RATE,
                 learning_rate=config.LEARNING_RATE / 10,
-                epochs=30,
+                # epochs=30,
+		epochs=1,
                 augmentation=augmentation,
                 # epochs=40,
                 # layers='heads')

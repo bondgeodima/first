@@ -34,7 +34,7 @@ sys.path.append(os.path.join(ROOT_DIR, ""))  # To find local version
 # Local path to trained weights file
 # single sign detect
 
-COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car.h5")
+COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car_qb.h5")
 
 # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/car_image_train/")
 
@@ -63,12 +63,12 @@ array = ['jpg']
 for item in array:
     # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/Kiev_tile/80-0734/")
     # IMAGE_DIR = 'F:/Kiev_tile/' + item + '/'
-    IMAGE_DIR = 'F:/sas_out/varshava_256/' + item + '/'
+    IMAGE_DIR = 'F:/car_kosmos/new_rgb_tile/tile_128/' + item + '/'
 
     s = {
         "type": "FeatureCollection",
         "name": "car",
-        "crs": {"type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857"}},
+        "crs": {"type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32636"}},
         "features": []
     }
 
@@ -106,7 +106,7 @@ for item in array:
             image_all = np.flipud(image_all)
 
             # Run detection
-            results_all = model_all.detect([image_all], verbose=1)
+            results_all = model_all.detect([image_all], verbose=0)
 
             # Visualize results
             r_all = results_all[0]
@@ -114,6 +114,8 @@ for item in array:
 
             i = 0
             for val in r_all['rois']:
+
+                # print (r_all['scores'])
 
                 # print(val[0], val[2], val[1], val[3])
 
@@ -130,7 +132,7 @@ for item in array:
                     feature = {
                         "type": "Feature",
                         "properties": {
-                            "score": 0.012
+                            "scores": 0.012
                         },
                         "geometry": {
                             "type": "MultiPolygon",
@@ -163,7 +165,8 @@ for item in array:
     # print(json.dumps(s, indent=4))R
     # with open('F:/car_image_train/data.geojson', 'w') as outfile:
     # f_out = 'F:/Kiev_tile/' + item + '.geojson'
-    f_out = 'F:/sas_out/varshava_256/' + item + '.geojson'
+    # f_out = 'F:/sas_out/varshava_256/' + item + '.geojson'
+    f_out = 'F:/car_kosmos/new_rgb_tile/tile_128/detect_car_google_model.geojson'
     with open(f_out, 'w') as outfile:
         json.dump(s, outfile)
     print("End")
