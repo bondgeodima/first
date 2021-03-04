@@ -34,7 +34,7 @@ sys.path.append(os.path.join(ROOT_DIR, ""))  # To find local version
 # Local path to trained weights file
 # single sign detect
 
-COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car_qb.h5")
+COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car_google.h5")
 
 # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/car_image_train/")
 
@@ -63,12 +63,12 @@ array = ['jpg']
 for item in array:
     # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/Kiev_tile/80-0734/")
     # IMAGE_DIR = 'F:/Kiev_tile/' + item + '/'
-    IMAGE_DIR = 'F:/car_kosmos/new_rgb_tile/tile_128/' + item + '/'
+    IMAGE_DIR = 'F:/Poland/image_dop_2/' + item + '/'
 
     s = {
         "type": "FeatureCollection",
         "name": "car",
-        "crs": {"type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32636"}},
+        "crs": {"type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857"}},
         "features": []
     }
 
@@ -166,7 +166,7 @@ for item in array:
     # with open('F:/car_image_train/data.geojson', 'w') as outfile:
     # f_out = 'F:/Kiev_tile/' + item + '.geojson'
     # f_out = 'F:/sas_out/varshava_256/' + item + '.geojson'
-    f_out = 'F:/car_kosmos/new_rgb_tile/tile_128/detect_car_google_model.geojson'
+    f_out = 'F:/Poland/image_dop_2/detect_car_google_model.geojson'
     with open(f_out, 'w') as outfile:
         json.dump(s, outfile)
     print("End")
