@@ -70,6 +70,9 @@ for i in range(min(tx), max(tx)):
 
         dx = b[2] - b[0]
 
+        x_coord = b[0]
+        y_coord = b[3]
+
         url = 'https://khms0.google.com/kh/v=894?x='+str(i)+'&y='+str(j)+'&z='+str(z)+''
 
         r = requests.get(url, stream=True)
@@ -85,9 +88,6 @@ for i in range(min(tx), max(tx)):
         im2.save(IMAGE_DIR_OUT + str(i) + "_" + str(j) + '.jpg', dpi=(278, 278))
 
         # im3 = Image.open(new_patch)
-
-        x_coord = b[0]
-        y_coord = b[3]
 
         f = open(IMAGE_DIR_OUT + str(i) + "_" + str(j) + '.jgw', "w+")
         f.write(str(scale) + '\r\n')

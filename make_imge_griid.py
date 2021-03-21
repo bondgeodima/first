@@ -3,12 +3,12 @@ import skimage.io
 import json
 
 ROOT_DIR = os.path.abspath("../")
-IMAGE_DIR = os.path.join(ROOT_DIR, "F:/car_kosmos/new_rgb_tile/tile_128/tif/")
+IMAGE_DIR = os.path.join(ROOT_DIR, r'F:\car_project\time_comparsion\2019')
 
 s = {
     "type": "FeatureCollection",
     "name": "car",
-    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::32636" } },
+    "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3785" } },
     "features": []
 }
 
@@ -63,7 +63,7 @@ for filename in os.listdir(IMAGE_DIR):
 s["features"] = features
 # print(json.dumps(s, indent=4))
 # with open('F:/car_image_train/data.geojson', 'w') as outfile:
-with open('F:/car_kosmos/new_rgb_tile/tile_128/data_grid_128.geojson', 'w') as outfile:
+with open(r'F:\car_project\time_comparsion\data_grid_2019.geojson', 'w') as outfile:
     json.dump(s, outfile)
 print("End")
 

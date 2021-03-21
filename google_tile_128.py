@@ -5,7 +5,6 @@ from PIL import Image
 
 from maptiler import GlobalMercator
 
-
 import numpy as np
 import skimage.io
 
@@ -41,7 +40,7 @@ sys.path.append(os.path.join(ROOT_DIR, ""))  # To find local version
 # Local path to trained weights file
 # single sign detect
 
-COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car_google.h5")
+COCO_MODEL_PATH_ALL = os.path.join(ROOT_DIR, "car_qb.h5")
 
 # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/car_image_train/")
 
@@ -58,13 +57,13 @@ model_all.load_weights(COCO_MODEL_PATH_ALL, by_name=True)
 
 class_names_all = ['BG', 'car']
 
-lat1 = 52.200643
-long1 = 20.974275
+lat1 = 50.420948
+long1 = 30.451994
 
-lat2 = 52.203171
-long2 = 20.980568
+lat2 = 50.427227
+long2 = 30.468898
 
-# Работать надо с 19 зумом гугла
+# Работать надо с 19 зумом гугла для случаев типа Варшава (ортофотоплан)
 # z = 19
 
 z = 19
