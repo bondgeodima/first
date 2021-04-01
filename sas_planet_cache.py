@@ -68,7 +68,7 @@ long1 = 30.315950
 lat2 = 50.530783
 long2 = 30.713327
 
-z = 19
+z = 18
 
 g1 = GlobalMercator()
 
@@ -190,7 +190,7 @@ def main():
 
     s["features"] = features
 
-    f_out = r'F:\car_kosmos\google\detect_car_google_low_model_sasplanet_cache_2.geojson'
+    f_out = r'F:\car_kosmos\google\detect_car_google_low_model_sasplanet_cache_2_z_19.geojson'
     with open(f_out, 'w') as outfile:
         json.dump(s, outfile)
 

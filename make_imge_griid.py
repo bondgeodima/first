@@ -3,7 +3,7 @@ import skimage.io
 import json
 
 ROOT_DIR = os.path.abspath("../")
-IMAGE_DIR = os.path.join(ROOT_DIR, r'F:\car_project\time_comparsion\2019')
+IMAGE_DIR = os.path.join(ROOT_DIR, r'F:\car_kosmos\google_v2\jpg')
 
 s = {
     "type": "FeatureCollection",
@@ -15,10 +15,10 @@ s = {
 features = []
 
 for filename in os.listdir(IMAGE_DIR):
-    if filename.split(".")[1] == 'tif':
+    if filename.split(".")[1] == 'jpg':
         # print (filename)
         your_path = os.path.join(IMAGE_DIR, filename)
-        file_coord = filename.split(".")[0] + '.wld'
+        file_coord = filename.split(".")[0] + '.jgw'
         file_coord = os.path.join(IMAGE_DIR, file_coord)
         # print(your_path)
 
@@ -63,7 +63,7 @@ for filename in os.listdir(IMAGE_DIR):
 s["features"] = features
 # print(json.dumps(s, indent=4))
 # with open('F:/car_image_train/data.geojson', 'w') as outfile:
-with open(r'F:\car_project\time_comparsion\data_grid_2019.geojson', 'w') as outfile:
+with open(r'F:\car_kosmos\google_v2\data_grid_2019_256.geojson', 'w') as outfile:
     json.dump(s, outfile)
 print("End")
 

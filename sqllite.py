@@ -71,23 +71,26 @@ def select_10_rows(conn):
     rows = cur.fetchall()
 
     for row in rows:
-        print(row[7])
+        print(row)
         im = Image.open(io.BytesIO(row[7]))
+        im.save(your_path)
         nx, ny = im.size
 
-        # imgplot = plt.imshow(im)
-        # plt.show()
-
-        im2 = im.resize((int(nx * 4), int(ny * 4)), Image.BICUBIC)
-        im2.save(your_path, dpi=(576, 576))
-
-        img = mpimg.imread(your_path)
-        imgplot = plt.imshow(img)
+        imgplot = plt.imshow(im)
         plt.show()
+
+        # im2 = im.resize((int(nx * 4), int(ny * 4)), Image.BICUBIC)
+        # im2.save(your_path, dpi=(576, 576))
+
+        # img = mpimg.imread(your_path)
+        # imgplot = plt.imshow(img)
+        # plt.show()
 
 
 def main():
-    database = r"F:\car_project\1002.773.sqlitedb"
+    # database = r"F:\car_project\1002.773.sqlitedb"
+    # database = r"F:\SAS_new\cache_sqlite2\sat\z19\149\86\598.345.sqlitedb"
+    database = r"F:\SAS_new\cache_sqlite2\sat\z20\299\172\1197.690.sqlitedb"
 
     # create a database connection
     conn = create_connection(database)

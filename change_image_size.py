@@ -7,8 +7,8 @@ from PIL import Image
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../")
 
-IMAGE_DIR = r'F:\car_project\ukraine\Ternopol\tif'
-IMAGE_DIR_OUT = r'F:\car_project\ukraine\Ternopol\_new_256\jpg'
+IMAGE_DIR = r'F:\car_kosmos\google_v2\576dpi\tif'
+IMAGE_DIR_OUT = r'F:\car_kosmos\google_v2\576dpi\jpg'
 
 for filename in os.listdir(IMAGE_DIR):
     if filename.split(".")[1] == 'tif':
@@ -20,7 +20,7 @@ for filename in os.listdir(IMAGE_DIR):
         im = Image.open(old_patch)
         nx, ny = im.size
 
-        im2 = im.resize((int(nx * 4), int(ny * 4)), Image.BICUBIC)
+        im2 = im.resize((int(nx * 6), int(ny * 6)), Image.BICUBIC)
         # im2.save(new_patch, dpi=(288, 288))
         im2.save(new_patch, dpi=(576, 576))
 

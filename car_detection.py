@@ -63,7 +63,7 @@ array = ['jpg']
 for item in array:
     # IMAGE_DIR = os.path.join(ROOT_DIR, "F:/Kiev_tile/80-0734/")
     # IMAGE_DIR = 'F:/Kiev_tile/' + item + '/'
-    IMAGE_DIR = 'F:/car_project/ukraine/Ternopol/_new_256/' + item + '/'
+    IMAGE_DIR = 'F:/car_kosmos/google_v2/576dpi/' + item + '/'
 
     s = {
         "type": "FeatureCollection",
@@ -166,7 +166,7 @@ for item in array:
     # with open('F:/car_image_train/data.geojson', 'w') as outfile:
     # f_out = 'F:/Kiev_tile/' + item + '.geojson'
     # f_out = 'F:/sas_out/varshava_256/' + item + '.geojson'
-    f_out = 'F:/car_project/ukraine/Ternopol/_new_256/detect_car_google_low_model.geojson'
+    f_out = 'F:/car_kosmos/google_v2/576dpi/detect_car_google_low_model.geojson'
     with open(f_out, 'w') as outfile:
         json.dump(s, outfile)
     print("End")
